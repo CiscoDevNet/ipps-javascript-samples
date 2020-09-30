@@ -4,7 +4,7 @@ Sample apps demonstrating common usage scenarios for the Cisco IP Phone Services
 
 Included samples:
 
-* `lda_directory.js` - Configurable sample allowing search by first/last/phone against a LDAP directory, providing output as a directory service; supports non-secure and StartTLS connections (`<CiscoIPPhoneInput>`, `<CiscoIPPhoneDirectory>`, `<CiscoIPPhoneText>`)
+* `ldap_directory.js` - Configurable sample allowing search by first/last/phone against a LDAP directory, providing output as a directory service; supports non-secure and StartTLS connections (`<CiscoIPPhoneInput>`, `<CiscoIPPhoneDirectory>`, `<CiscoIPPhoneText>`)
 
 [IP Phone Services on DevNet](https://developer.cisco.com/site/ip-phone-services/)
 
@@ -54,7 +54,7 @@ This sample was tested using:
 
     Then open it and enter your configuration options.
 
-    Be sure to save the file
+    Be sure to save the file.
 
 1. In VS Code, run/debug the app by switching to the **Run** tab, selecting the desired sample from the dropdown in the upper-left, then clicking the green arrow or pressing **F5**.
 

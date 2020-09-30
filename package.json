@@ -1,0 +1,13 @@
+{
+  "name": "ipps-javascript-samples",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "ldapjs": "^2.2.0",
+    "uuid": "^8.3.0"
+  }
+}

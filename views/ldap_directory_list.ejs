@@ -1,0 +1,10 @@
+<CiscoIPPhoneDirectory>
+    <Title>Search Results</Title>
+    <Prompt>Records <%= start %> to <%= start+count-1 %> of <%= total %> records</Prompt>
+    <% for (i=start-1;i<(start+count-1); i++){ %>
+        <DirectoryEntry>
+            <Name><%= userList[i].lastName+', '+userList[i].firstName %></Name>
+            <Telephone><%= userList[i].number %></Telephone>
+        </DirectoryEntry>
+    <% } %>
+</CiscoIPPhoneDirectory>

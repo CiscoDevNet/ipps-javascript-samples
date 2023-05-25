@@ -4,13 +4,15 @@ Sample apps demonstrating common usage scenarios for the Cisco IP Phone Services
 
 Included samples:
 
-* `ldap_directory.js` - Configurable sample allowing search by first/last/phone against a LDAP directory, providing output as a directory service; supports non-secure and StartTLS connections (`<CiscoIPPhoneInput>`, `<CiscoIPPhoneDirectory>`, `<CiscoIPPhoneText>`)
+* `ldap_directory.js` - Configurable sample allowing search by first/last/phone against a LDAP directory, providing output as a directory service; supports non-secure and StartTLS connections (`<CiscoIPPhoneInput>`, `<CiscoIPPhoneDirectory>`, `<CiscoIPPhoneText>`).
+
+* `push_init.js` - Demonstrate clearing local call-history and closing services/messages/directories UIs, using HTTP POST (`<CiscoIPPhoneExecute>`).
 
 [IP Phone Services on DevNet](https://developer.cisco.com/site/ip-phone-services/)
 
 ## Pre-Requisites
 
-* **NodeJS & NPM** - [Node.js](https://nodejs.org) and [NPM](https://www.npmjs.com/) to install dependencies.  
+* **NodeJS/NPM (v18+)** - [Node.js](https://nodejs.org) and [NPM](https://www.npmjs.com/) to install dependencies.  
 
     If you do not have Node/NPM installed, see the following guides:
     * Linux: http://blog.teamtreehouse.com/install-node-js-npm-linux
@@ -22,10 +24,11 @@ Included samples:
 * **Git** - Source code management and sharing [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 This sample was tested using:
-* Ubuntu 2020
-* Node.js 12.14.1
-* CUCM 12.5
- OpenLDAP 2.4
+
+* Ubuntu 23.04
+* Node.js 18.16.0
+* CUCM 14
+* OpenLDAP 2.4
 
 ## Running the Samples
 
@@ -56,7 +59,7 @@ This sample was tested using:
 
     Be sure to save the file.
 
-1. In VS Code, run/debug the app by switching to the **Run** tab, selecting the desired sample from the dropdown in the upper-left, then clicking the green arrow or pressing **F5**.
+1. In VS Code, run/debug the app by switching to the **Run** tab, selecting the desired sample from the dropdown in the upper-left, then clicking the green arrow - or just press **F5**.
 
 1. Most samples will require configuring a Phone Service in CUCM.  This sample shows a typical configuration for the `ldap_directory.js` sample app:
 

@@ -6,10 +6,22 @@
     "configurations": [
         {
             "type": "node",
+            "runtimeVersion": "18",
             "request": "launch",
-            "name": "Launch LDAP directory",
+            "name": "Launch ldap_directory.js",
             "program": "${workspaceFolder}/ldap_directory.js",
             "outputCapture": "std"
+        },
+        {
+            "type": "node",
+            "runtimeVersion": "18",
+            "request": "launch",
+            "name": "Launch push_init.mjs",
+            "program": "${workspaceFolder}/push_init.mjs",
+            "outputCapture": "std",
+            "env": {
+                "NODE_DEBUG": "http"
+            }
         }
     ]
 }

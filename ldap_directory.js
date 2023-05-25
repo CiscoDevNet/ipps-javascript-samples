@@ -1,6 +1,3 @@
-// Copyright (c) 2020 Cisco Systems
-// Licensed under the MIT License
-
 const express = require('express');
 const session = require('express-session');
 const ejs = require('ejs');
@@ -31,10 +28,10 @@ const ldapPassword = process.env.LDAP_PASSWORD;
 
 // Function to return a <CiscoIPPhoneText> object with either default
 // or detailed error details based on configuration
-function returnErrorText(res,err){
-    let message = (process.env.SHOW_ERROR_DETAIL=='True') ? err.message : 'An error occurred, please contact your system administrator';
+function returnErrorText(res, err) {
+    let message = (process.env.SHOW_ERROR_DETAIL == 'True') ? err.message : 'An error occurred, please contact your system administrator';
     res.set({ 'Content-Type': 'text/xml' });
-    res.status(200).render('ldap_directory/text.ejs',{
+    res.status(200).render('ldap_directory/text.ejs', {
         title: 'Error',
         text: message
     });
@@ -67,8 +64,8 @@ app.get('/list', async function (req, res) {
 
     // If there are no query parameters on the search request,
     // return if configuration disallows empty searches
-    if ((process.env.ALLOW_EMPTY_SEARCH=='False')&&(Object.keys(req.query).length==0)) {
-        res.status(200).render('ldap_directory/text.ejs',{
+    if ((process.env.ALLOW_EMPTY_SEARCH == 'False') && (Object.keys(req.query).length == 0)) {
+        res.status(200).render('ldap_directory/text.ejs', {
             title: "Search invalid",
             text: "At least one search criteria must be entered"
         });
@@ -94,18 +91,18 @@ app.get('/list', async function (req, res) {
 
         // If a LDAP user password is configured, attempt to bind/authenticate
         if (process.env.LDAP_USER_DN && process.env.LDAP_PASSWORD) {
-            const result = await (async ()=>{
-                return new Promise((resolve,reject) => {
+            const result = await (async () => {
+                return new Promise((resolve, reject) => {
                     client.bind(process.env.LDAP_USER_DN, process.env.LDAP_PASSWORD, (err) => {
                         if (err) reject(err);
                         else resolve(true);
                     });
                 });
             })()
-            .catch( err => {
-                console.error(`LDAP bind error: ${err}`);
-                returnErrorText(res,err);
-            });
+                .catch(err => {
+                    console.error(`LDAP bind error: ${err}`);
+                    returnErrorText(res, err);
+                });
             if (!result) return;
         }
 
@@ -122,7 +119,7 @@ app.get('/list', async function (req, res) {
 
         // Launch the search request.  Wrapping the ldapjs callback-style function
         // in an awaited promise to ensure we get results synchronously
-        userList = await (async function() {
+        userList = await (async function () {
             return new Promise((resolve, reject) => {
                 client.search(process.env.LDAP_SEARCH_BASE, options, (err, ldapRes) => {
                     if (err) return reject(err);
@@ -147,10 +144,10 @@ app.get('/list', async function (req, res) {
                 });
             });
         })()
-        .catch(err=>{
-            console.error(`LDAP search error: ${err}`);
-            returnErrorText(res,err);
-        });
+            .catch(err => {
+                console.error(`LDAP search error: ${err}`);
+                returnErrorText(res, err);
+            });
         if (!userList) return;
 
         // Sort the array by firstName, and then by lastName
@@ -172,7 +169,7 @@ app.get('/list', async function (req, res) {
         next = start + count;
     }
 
-    if (total == 0) res.status(200).render('ldap_directory/text.ejs',{
+    if (total == 0) res.status(200).render('ldap_directory/text.ejs', {
         title: 'Search Results',
         text: 'No matching records found'
     })
